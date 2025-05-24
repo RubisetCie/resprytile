@@ -8,7 +8,7 @@ bl_info = {
     "location": "View3D > UI panel > ReSprytile",
     "wiki_url": "https://docs.sprytile.xyz/quick-start/",
     "tracker_url": "https://github.com/ionthedev/ReSprytile/issues",
-    "updater_info": "https://github.com/ionthedev/ReSprytile",
+    "updater_info": "https://github.com/RubisetCie/resprytile",
     "category": "Paint"
 }
 
@@ -39,7 +39,6 @@ else:
 import bpy
 import bpy.utils.previews
 from bpy.app.handlers import persistent
-from . import addon_updater_ops
 from bpy.utils.toolsystem import ToolDef
 from bpy.props import *
 import rna_keymap_ui
@@ -889,8 +888,6 @@ def sprytile_load_handler(dummy):
             sprytile_data.world_pixels = addon_prefs.default_pixel_density
 
 def register():
-    addon_updater_ops.register(bl_info)
-
     for cl in classes:
         bpy.utils.register_class(cl)
 
@@ -905,7 +902,6 @@ def register():
 
 
 def unregister():
-    addon_updater_ops.unregister()
     teardown_keymap()
     unregister_tools()
     PROP_OP_SprytilePropsTeardown.props_teardown()

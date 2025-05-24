@@ -4,5 +4,3 @@ __pycache__/
 *$py.class
 *.xml
 *.iml
-sprytile_updater/
-*/updater_status.json

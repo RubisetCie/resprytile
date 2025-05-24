@@ -17,7 +17,6 @@ from datetime import datetime
 from os import path
 import sprytile_modal
 import sprytile_preview
-import addon_updater_ops
 
 
 def get_build_vertices(position, x_vector, y_vector, up_vector, right_vector):
@@ -1926,11 +1925,6 @@ class VIEW3D_PT_SprytileObjectPanel(bpy.types.Panel):
         return True
 
     def draw(self, context):
-        # if bpy.app.version > (2, 77, 0):
-        #     addon_updater_ops.check_for_update_background()
-        # else:
-        #     addon_updater_ops.check_for_update_background(context)
-
         layout = self.layout
 
         if hasattr(context.scene, "sprytile_data") is False:
@@ -1971,8 +1965,6 @@ class VIEW3D_PT_SprytileObjectPanel(bpy.types.Panel):
         split = box.split(factor=0.3, align=True)
         split.prop(context.scene.sprytile_data, "auto_reload", toggle=True)
         split.operator("sprytile.reload_imgs")
-
-        # addon_updater_ops.update_notice_box_ui(self, context)
 
 
 class VIEW3D_MT_SprytileWorkDropDown(bpy.types.Menu):
@@ -2038,8 +2030,6 @@ class VIEW3D_PT_SprytileWorkflowPanel(bpy.types.Panel):
             return context.object.mode == 'EDIT'
 
     def draw(self, context):
-        addon_updater_ops.check_for_update_background()
-
         layout = self.layout
 
         if hasattr(context.scene, "sprytile_data") is False:
